@@ -471,6 +471,18 @@ function RandomChallengeCard() {
         ))}
       </div>
 
+      <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
+        <span className="inline-flex items-center gap-1.5">
+          <Clock className="h-3.5 w-3.5 text-secondary" strokeWidth={2} />
+          <span className="font-semibold text-foreground">35 min</span>
+        </span>
+        <span className="h-3 w-px bg-border" />
+        <span className="inline-flex items-center gap-1.5">
+          <Gauge className="h-3.5 w-3.5 text-secondary" strokeWidth={2} />
+          <span className="font-semibold text-foreground">Mixed</span>
+        </span>
+      </div>
+
       <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-secondary px-4 py-2.5 text-sm font-semibold text-secondary-foreground transition-transform hover:-translate-y-0.5">
         Start Challenge
         <Play className="h-3.5 w-3.5 fill-current" />
