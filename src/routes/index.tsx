@@ -297,7 +297,7 @@ function StatsRow() {
 /* ---------------- Continue Learning (Featured) ---------------- */
 function ContinueLearningCard() {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-primary)] p-6 text-primary-foreground shadow-[var(--shadow-glow)]">
+    <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-primary)] p-8 text-primary-foreground shadow-[var(--shadow-glow)]">
       <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
       <div className="flex items-center justify-between">
         <span className="rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest backdrop-blur">
@@ -308,18 +308,18 @@ function ContinueLearningCard() {
         </div>
       </div>
 
-      <p className="mt-6 text-xs font-medium uppercase tracking-widest text-white/70">
+      <p className="mt-8 text-xs font-medium uppercase tracking-widest text-white/70">
         Mathematics
       </p>
       <h3 className="mt-1 text-2xl font-extrabold tracking-tight">Quadratic Equations</h3>
-      <p className="mt-1 text-xs text-white/80">Chapter 4 · Lesson 3 of 5</p>
+      <p className="mt-1.5 text-xs text-white/80">Chapter 4 · Lesson 3 of 5</p>
 
-      <div className="mt-5">
+      <div className="mt-8">
         <div className="flex items-center justify-between text-xs font-medium">
           <span className="text-white/80">Progress</span>
           <span>68%</span>
         </div>
-        <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/20">
+        <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-white/20">
           <div
             className="h-full rounded-full bg-white transition-all duration-700"
             style={{ width: "68%" }}
@@ -327,7 +327,7 @@ function ContinueLearningCard() {
         </div>
       </div>
 
-      <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5">
+      <button className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5">
         Continue Learning
         <ChevronRight className="h-4 w-4" />
       </button>
