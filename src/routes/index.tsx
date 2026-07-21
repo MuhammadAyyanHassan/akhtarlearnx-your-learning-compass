@@ -17,8 +17,6 @@ import {
   ChevronRight,
   Award,
   Crown,
-  Clock,
-  Gauge,
   LogOut,
 } from "lucide-react";
 import {
@@ -87,7 +85,7 @@ function Dashboard() {
 
         <div className="mt-6 grid grid-cols-12 gap-6">
           {/* LEFT COLUMN */}
-          <section className="col-span-12 xl:col-span-7 space-y-6">
+          <section className="col-span-12 xl:col-span-8 space-y-6">
             <HeroCard />
             <StatsRow />
 
@@ -104,7 +102,7 @@ function Dashboard() {
           </section>
 
           {/* RIGHT COLUMN */}
-          <aside className="col-span-12 xl:col-span-5 space-y-6">
+          <aside className="col-span-12 xl:col-span-4 space-y-6">
             <ContinueLearningCard />
             <WeeklyXPCard />
             <UpcomingGoalCard />
@@ -200,22 +198,22 @@ function TopBar() {
 /* ---------------- Hero ---------------- */
 function HeroCard() {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-hero)] p-10 shadow-[var(--shadow-soft)]">
+    <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-hero)] p-8 shadow-[var(--shadow-soft)]">
       <div className="grid grid-cols-5 items-center gap-6">
         <div className="col-span-3">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-card/70 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur">
             <Sparkles className="h-3 w-3" />
             Day 12 streak — keep it going
           </span>
-          <h2 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight">
+          <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight">
             Ready to master another <br />
             <span className="text-primary">chapter today?</span>
           </h2>
-          <p className="mt-3 max-w-md text-sm text-muted-foreground">
-            Only 420 XP left to reach Level 28 and unlock the Veteran title! Keep the momentum
-            going, Muhammad.
+          <p className="mt-2 max-w-md text-sm text-muted-foreground">
+            You're only 420 XP away from unlocking the Veteran title. Keep the momentum going,
+            Muhammad.
           </p>
-          <div className="mt-6 flex items-center gap-3">
+          <div className="mt-5 flex items-center gap-3">
             <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5">
               <Play className="h-4 w-4 fill-current" />
               Resume learning
@@ -230,8 +228,8 @@ function HeroCard() {
             src={heroStudent}
             alt="Student studying with a book and laptop"
             width={280}
-            height={260}
-            className="h-[260px] w-auto object-contain drop-shadow-xl"
+            height={240}
+            className="h-[220px] w-auto object-contain drop-shadow-xl"
           />
         </div>
       </div>
@@ -299,7 +297,7 @@ function StatsRow() {
 /* ---------------- Continue Learning (Featured) ---------------- */
 function ContinueLearningCard() {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-primary)] p-8 text-primary-foreground shadow-[var(--shadow-glow)]">
+    <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-primary)] p-6 text-primary-foreground shadow-[var(--shadow-glow)]">
       <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
       <div className="flex items-center justify-between">
         <span className="rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest backdrop-blur">
@@ -310,18 +308,18 @@ function ContinueLearningCard() {
         </div>
       </div>
 
-      <p className="mt-8 text-xs font-medium uppercase tracking-widest text-white/70">
+      <p className="mt-6 text-xs font-medium uppercase tracking-widest text-white/70">
         Mathematics
       </p>
       <h3 className="mt-1 text-2xl font-extrabold tracking-tight">Quadratic Equations</h3>
-      <p className="mt-1.5 text-xs text-white/80">Chapter 4 · Lesson 3 of 5</p>
+      <p className="mt-1 text-xs text-white/80">Chapter 4 · Lesson 3 of 5</p>
 
-      <div className="mt-8">
+      <div className="mt-5">
         <div className="flex items-center justify-between text-xs font-medium">
           <span className="text-white/80">Progress</span>
           <span>68%</span>
         </div>
-        <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-white/20">
+        <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/20">
           <div
             className="h-full rounded-full bg-white transition-all duration-700"
             style={{ width: "68%" }}
@@ -329,7 +327,7 @@ function ContinueLearningCard() {
         </div>
       </div>
 
-      <button className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5">
+      <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5">
         Continue Learning
         <ChevronRight className="h-4 w-4" />
       </button>
@@ -471,18 +469,6 @@ function RandomChallengeCard() {
             {s}
           </span>
         ))}
-      </div>
-
-      <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
-        <span className="inline-flex items-center gap-1.5">
-          <Clock className="h-3.5 w-3.5 text-secondary" strokeWidth={2} />
-          <span className="font-semibold text-foreground">35 min</span>
-        </span>
-        <span className="h-3 w-px bg-border" />
-        <span className="inline-flex items-center gap-1.5">
-          <Gauge className="h-3.5 w-3.5 text-secondary" strokeWidth={2} />
-          <span className="font-semibold text-foreground">Mixed</span>
-        </span>
       </div>
 
       <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-secondary px-4 py-2.5 text-sm font-semibold text-secondary-foreground transition-transform hover:-translate-y-0.5">
