@@ -17,6 +17,8 @@ import {
   ChevronRight,
   Award,
   Crown,
+  Clock,
+  Gauge,
   LogOut,
 } from "lucide-react";
 import {
