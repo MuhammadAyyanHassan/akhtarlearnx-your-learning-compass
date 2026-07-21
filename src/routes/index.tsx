@@ -85,7 +85,7 @@ function Dashboard() {
 
         <div className="mt-6 grid grid-cols-12 gap-6">
           {/* LEFT COLUMN */}
-          <section className="col-span-12 xl:col-span-8 space-y-6">
+          <section className="col-span-12 xl:col-span-7 space-y-6">
             <HeroCard />
             <StatsRow />
 
@@ -102,7 +102,7 @@ function Dashboard() {
           </section>
 
           {/* RIGHT COLUMN */}
-          <aside className="col-span-12 xl:col-span-4 space-y-6">
+          <aside className="col-span-12 xl:col-span-5 space-y-6">
             <ContinueLearningCard />
             <WeeklyXPCard />
             <UpcomingGoalCard />
