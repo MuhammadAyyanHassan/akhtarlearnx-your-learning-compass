@@ -198,22 +198,22 @@ function TopBar() {
 /* ---------------- Hero ---------------- */
 function HeroCard() {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-hero)] p-8 shadow-[var(--shadow-soft)]">
+    <div className="relative overflow-hidden rounded-3xl bg-[image:var(--gradient-hero)] p-10 shadow-[var(--shadow-soft)]">
       <div className="grid grid-cols-5 items-center gap-6">
         <div className="col-span-3">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-card/70 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur">
             <Sparkles className="h-3 w-3" />
             Day 12 streak — keep it going
           </span>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight">
+          <h2 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight">
             Ready to master another <br />
             <span className="text-primary">chapter today?</span>
           </h2>
-          <p className="mt-2 max-w-md text-sm text-muted-foreground">
-            You're only 420 XP away from unlocking the Veteran title. Keep the momentum going,
-            Muhammad.
+          <p className="mt-3 max-w-md text-sm text-muted-foreground">
+            Only 420 XP left to reach Level 28 and unlock the Veteran title! Keep the momentum
+            going, Muhammad.
           </p>
-          <div className="mt-5 flex items-center gap-3">
+          <div className="mt-6 flex items-center gap-3">
             <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5">
               <Play className="h-4 w-4 fill-current" />
               Resume learning
@@ -228,8 +228,8 @@ function HeroCard() {
             src={heroStudent}
             alt="Student studying with a book and laptop"
             width={280}
-            height={240}
-            className="h-[220px] w-auto object-contain drop-shadow-xl"
+            height={260}
+            className="h-[260px] w-auto object-contain drop-shadow-xl"
           />
         </div>
       </div>
