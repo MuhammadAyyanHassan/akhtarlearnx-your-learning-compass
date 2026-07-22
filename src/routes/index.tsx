@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   LayoutDashboard,
   BookOpen,
@@ -52,11 +52,11 @@ export const Route = createFileRoute("/")({
 });
 
 const navItems = [
-  { icon: LayoutDashboard, label: "Dashboard", active: true },
-  { icon: BookOpen, label: "Subjects" },
-  { icon: Trophy, label: "Achievements" },
-  { icon: Medal, label: "Leaderboard" },
-  { icon: User, label: "Profile" },
+  { icon: LayoutDashboard, label: "Dashboard", to: "/" as const, exact: true },
+  { icon: BookOpen, label: "Subjects", to: "/learn" as const },
+  { icon: Trophy, label: "Achievements", to: "/" as const },
+  { icon: Medal, label: "Leaderboard", to: "/" as const },
+  { icon: User, label: "Profile", to: "/" as const },
 ];
 
 const weeklyXP = [
@@ -131,20 +131,18 @@ function Sidebar() {
 
       <nav className="mt-10 flex-1 space-y-1.5">
         {navItems.map((item) => (
-          <button
+          <Link
             key={item.label}
-            className={`group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all ${
-              item.active
-                ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-[var(--shadow-glow)]"
-                : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-white"
-            }`}
+            to={item.to}
+            activeOptions={item.exact ? { exact: true } : undefined}
+            className="group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-sidebar-foreground/80 transition-all hover:bg-sidebar-accent hover:text-white data-[status=active]:bg-sidebar-primary data-[status=active]:text-sidebar-primary-foreground data-[status=active]:shadow-[var(--shadow-glow)]"
           >
             <item.icon
               className="h-[18px] w-[18px] transition-transform group-hover:scale-110"
               strokeWidth={1.75}
             />
             {item.label}
-          </button>
+          </Link>
         ))}
       </nav>
 
@@ -214,10 +212,13 @@ function HeroCard() {
             Muhammad.
           </p>
           <div className="mt-5 flex items-center gap-3">
-            <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5">
+            <Link
+              to="/learn"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
+            >
               <Play className="h-4 w-4 fill-current" />
               Resume learning
-            </button>
+            </Link>
             <button className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-accent">
               Browse subjects
             </button>
@@ -327,10 +328,13 @@ function ContinueLearningCard() {
         </div>
       </div>
 
-      <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5">
+      <Link
+        to="/learn"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5"
+      >
         Continue Learning
         <ChevronRight className="h-4 w-4" />
-      </button>
+      </Link>
     </div>
   );
 }
@@ -436,10 +440,13 @@ function DailyMissionCard() {
         </div>
       </div>
 
-      <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
+      <Link
+        to="/learn"
+        className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5"
+      >
         Continue Mission
         <ChevronRight className="h-4 w-4" />
-      </button>
+      </Link>
     </div>
   );
 }
