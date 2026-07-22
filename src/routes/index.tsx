@@ -212,10 +212,13 @@ function HeroCard() {
             Muhammad.
           </p>
           <div className="mt-5 flex items-center gap-3">
-            <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5">
+            <Link
+              to="/learn"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
+            >
               <Play className="h-4 w-4 fill-current" />
               Resume learning
-            </button>
+            </Link>
             <button className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-accent">
               Browse subjects
             </button>
