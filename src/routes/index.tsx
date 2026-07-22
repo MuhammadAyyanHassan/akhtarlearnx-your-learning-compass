@@ -328,10 +328,13 @@ function ContinueLearningCard() {
         </div>
       </div>
 
-      <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5">
+      <Link
+        to="/learn"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5"
+      >
         Continue Learning
         <ChevronRight className="h-4 w-4" />
-      </button>
+      </Link>
     </div>
   );
 }
