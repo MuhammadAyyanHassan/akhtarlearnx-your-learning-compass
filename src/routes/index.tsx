@@ -131,20 +131,18 @@ function Sidebar() {
 
       <nav className="mt-10 flex-1 space-y-1.5">
         {navItems.map((item) => (
-          <button
+          <Link
             key={item.label}
-            className={`group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all ${
-              item.active
-                ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-[var(--shadow-glow)]"
-                : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-white"
-            }`}
+            to={item.to}
+            activeOptions={item.exact ? { exact: true } : undefined}
+            className="group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-sidebar-foreground/80 transition-all hover:bg-sidebar-accent hover:text-white data-[status=active]:bg-sidebar-primary data-[status=active]:text-sidebar-primary-foreground data-[status=active]:shadow-[var(--shadow-glow)]"
           >
             <item.icon
               className="h-[18px] w-[18px] transition-transform group-hover:scale-110"
               strokeWidth={1.75}
             />
             {item.label}
-          </button>
+          </Link>
         ))}
       </nav>
 
