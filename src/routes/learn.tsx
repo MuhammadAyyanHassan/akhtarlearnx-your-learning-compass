@@ -45,7 +45,7 @@ export const Route = createFileRoute("/learn")({
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", to: "/" as const, match: "/" },
   { icon: BookOpen, label: "Subjects", to: "/learn" as const, match: "/learn" },
-  { icon: Trophy, label: "Achievements", to: "/" as const, match: "/achievements" },
+  { icon: Trophy, label: "Achievements", to: "/achievements" as const, match: "/achievements" },
   { icon: Medal, label: "Leaderboard", to: "/" as const, match: "/leaderboard" },
   { icon: User, label: "Profile", to: "/" as const, match: "/profile" },
 ];
