@@ -115,6 +115,7 @@ function Dashboard() {
 
 /* ---------------- Sidebar ---------------- */
 function Sidebar() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <aside className="fixed inset-y-4 left-4 z-20 flex w-[216px] flex-col rounded-3xl bg-sidebar px-5 py-7 text-sidebar-foreground shadow-[var(--shadow-elevated)]">
       <div className="flex items-center gap-2 px-2">
