@@ -437,11 +437,13 @@ function ActionBar({
   canSubmit,
   onSubmit,
   onNext,
+  onSkip,
 }: {
   isSubmitted: boolean;
   canSubmit: boolean;
   onSubmit: () => void;
   onNext: () => void;
+  onSkip: () => void;
 }) {
   return (
     <div className="flex items-center justify-between rounded-3xl border border-border/60 bg-card p-4 shadow-[var(--shadow-soft)]">
@@ -450,11 +452,19 @@ function ActionBar({
         Previous
       </button>
 
-      <p className="text-xs font-medium text-muted-foreground">
-        {isSubmitted
-          ? "Review the answer, then continue to the next question."
-          : "Select an answer to submit."}
-      </p>
+      {isSubmitted ? (
+        <p className="text-xs font-medium text-muted-foreground">
+          Review the answer, then continue to the next question.
+        </p>
+      ) : (
+        <button
+          onClick={onSkip}
+          className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+        >
+          <SkipForward className="h-4 w-4" />
+          Skip Question
+        </button>
+      )}
 
       {!isSubmitted ? (
         <button
