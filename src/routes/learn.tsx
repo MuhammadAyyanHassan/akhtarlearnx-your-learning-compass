@@ -103,6 +103,7 @@ function LearnPage() {
               canSubmit={selected !== null}
               onSubmit={submit}
               onNext={next}
+              onSkip={next}
             />
           </section>
 
