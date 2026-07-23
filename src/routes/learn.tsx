@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   LayoutDashboard,
@@ -20,6 +20,7 @@ import {
   Sparkles,
   LogOut,
   ArrowRight,
+  SkipForward,
 } from "lucide-react";
 
 export const Route = createFileRoute("/learn")({
@@ -42,11 +43,11 @@ export const Route = createFileRoute("/learn")({
 });
 
 const navItems = [
-  { icon: LayoutDashboard, label: "Dashboard", to: "/" as const },
-  { icon: BookOpen, label: "Subjects", to: "/learn" as const, active: true },
-  { icon: Trophy, label: "Achievements", to: "/" as const },
-  { icon: Medal, label: "Leaderboard", to: "/" as const },
-  { icon: User, label: "Profile", to: "/" as const },
+  { icon: LayoutDashboard, label: "Dashboard", to: "/" as const, match: "/" },
+  { icon: BookOpen, label: "Subjects", to: "/learn" as const, match: "/learn" },
+  { icon: Trophy, label: "Achievements", to: "/" as const, match: "/achievements" },
+  { icon: Medal, label: "Leaderboard", to: "/" as const, match: "/leaderboard" },
+  { icon: User, label: "Profile", to: "/" as const, match: "/profile" },
 ];
 
 const options = [
@@ -102,6 +103,7 @@ function LearnPage() {
               canSubmit={selected !== null}
               onSubmit={submit}
               onNext={next}
+              onSkip={next}
             />
           </section>
 
@@ -119,6 +121,7 @@ function LearnPage() {
 
 /* ---------------- Sidebar ---------------- */
 function Sidebar() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <aside className="fixed inset-y-4 left-4 z-20 flex w-[216px] flex-col rounded-3xl bg-sidebar px-5 py-7 text-sidebar-foreground shadow-[var(--shadow-elevated)]">
       <div className="flex items-center gap-2 px-2">
@@ -134,23 +137,26 @@ function Sidebar() {
       </div>
 
       <nav className="mt-10 flex-1 space-y-1.5">
-        {navItems.map((item) => (
-          <Link
-            key={item.label}
-            to={item.to}
-            className={`group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all ${
-              item.active
-                ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-[var(--shadow-glow)]"
-                : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-white"
-            }`}
-          >
-            <item.icon
-              className="h-[18px] w-[18px] transition-transform group-hover:scale-110"
-              strokeWidth={1.75}
-            />
-            {item.label}
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          const isActive = pathname === item.match;
+          return (
+            <Link
+              key={item.label}
+              to={item.to}
+              className={`group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all ${
+                isActive
+                  ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-[var(--shadow-glow)]"
+                  : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-white"
+              }`}
+            >
+              <item.icon
+                className="h-[18px] w-[18px] transition-transform group-hover:scale-110"
+                strokeWidth={1.75}
+              />
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
 
       <button className="mt-4 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-sidebar-foreground/70 transition-colors hover:bg-sidebar-accent hover:text-white">
@@ -432,11 +438,13 @@ function ActionBar({
   canSubmit,
   onSubmit,
   onNext,
+  onSkip,
 }: {
   isSubmitted: boolean;
   canSubmit: boolean;
   onSubmit: () => void;
   onNext: () => void;
+  onSkip: () => void;
 }) {
   return (
     <div className="flex items-center justify-between rounded-3xl border border-border/60 bg-card p-4 shadow-[var(--shadow-soft)]">
@@ -445,11 +453,19 @@ function ActionBar({
         Previous
       </button>
 
-      <p className="text-xs font-medium text-muted-foreground">
-        {isSubmitted
-          ? "Review the answer, then continue to the next question."
-          : "Select an answer to submit."}
-      </p>
+      {isSubmitted ? (
+        <p className="text-xs font-medium text-muted-foreground">
+          Review the answer, then continue to the next question.
+        </p>
+      ) : (
+        <button
+          onClick={onSkip}
+          className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+        >
+          <SkipForward className="h-4 w-4" />
+          Skip Question
+        </button>
+      )}
 
       {!isSubmitted ? (
         <button
