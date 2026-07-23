@@ -52,11 +52,11 @@ export const Route = createFileRoute("/")({
 });
 
 const navItems = [
-  { icon: LayoutDashboard, label: "Dashboard", to: "/" as const, exact: true },
-  { icon: BookOpen, label: "Subjects", to: "/learn" as const },
-  { icon: Trophy, label: "Achievements", to: "/" as const },
-  { icon: Medal, label: "Leaderboard", to: "/" as const },
-  { icon: User, label: "Profile", to: "/" as const },
+  { icon: LayoutDashboard, label: "Dashboard", to: "/" as const, match: "/" },
+  { icon: BookOpen, label: "Subjects", to: "/learn" as const, match: "/learn" },
+  { icon: Trophy, label: "Achievements", to: "/" as const, match: "/achievements" },
+  { icon: Medal, label: "Leaderboard", to: "/" as const, match: "/leaderboard" },
+  { icon: User, label: "Profile", to: "/" as const, match: "/profile" },
 ];
 
 const weeklyXP = [
